@@ -19,7 +19,7 @@ You can use regular old posts to create new code patterns. The HTML/PHP and CSS 
 
 1. Add a new post.
 2. Set your Loop parameters (limited right now, working on adding others).
-3. Add HTML/PHP. You can use any familiar WordPress funciton you would normally use within the Loop. No need to include <?php or ?> at the beginning and end, this is taken care of for you.
+3. Add HTML/PHP. You can use any familiar WordPress funciton you would normally use within the Loop. Make sure to include <?php or ?> at the beginning and end.
 4. Add custom CSS.
 
 The posts will be automatically added to your navigation. In order to group different posts together in the navigation, simply create a new category and add your desired posts.
