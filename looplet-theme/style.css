@@ -1,0 +1,257 @@
+/*
+Theme Name: Looplet
+Theme URI: http://wpjay.com/looplet
+Author: Jay Hoffmann
+Author URI: https://twitter.com/jaydhoffmann
+Description: Looplet is a WordPress code library that lets you create simple and reusable patterns from within a customizable loop.
+Version: 1.0
+License: GNU General Public License
+License URI: license.txt
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+Resetting and rebuilding styles have been helped along thanks to the fine work of
+Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
+along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+and Blueprint http://www.blueprintcss.org/
+
+Grid courtesy of Dave Rupert's Foldy. https://github.com/davatron5000/Foldy960
+*/
+
+/* Grid > 6 Column Mobile First
+-------------------------------------------------------------- */
+.container {
+  /*
+    The `max-width` property is the width governer. I dare you to experiment
+    with setting this larger, something like 1280px.
+  */
+	max-width: 1280px;
+	width:92%;
+	margin:0px auto;
+	position: relative;
+}
+
+.row {
+  clear: both;
+  margin-top: 2em;
+}
+
+@media screen and (min-width: 480px) {
+  .container {
+    width: 98%;
+  }
+
+  .grid-1,
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .grid-5,
+  .grid-6,
+  .grid-half,
+  .grid-full,
+  .grid-unit {
+    float: left;
+    width:96.969696969697%;
+    margin:0 1.515151515152% 1em;
+  }
+
+  .gallery .grid-unit,
+  .grid-half {
+    width:46.969696969697%;
+    margin: 0 1.515151515152% 1em;
+  }
+
+  .flow-opposite{
+    float:right
+  }
+
+}
+
+@media screen and (min-width: 640px) {
+  .grid-1     { width: 13.636363636364%; }
+  .grid-2     { width: 30.30303030303%; }
+  .grid-3,
+  .grid-half  { width: 43.969696969697%; }
+  .grid-4     { width: 63.636363636364%; }
+  .grid-5     { width: 80.30303030303%; }
+  .grid-6,
+  .grid-full  { width: 96.969696969697%; }
+
+  .gallery .grid-unit {
+    width: 30.30303030303%;
+  }
+
+  .content-pad-right {
+    padding-right: 4%; /* Use (or don't) as necessary. */
+  }
+
+  .content-pad-left {
+    padding-left: 4%;
+  }
+
+}
+
+/* Micro Clearfix - http://nicolasgallagher.com/micro-clearfix-hack/
+For best results, use your favorite clearfix here.
+-------------------------------------------------------------- */
+.cf:before, .cf:after { content:""; display:table; }
+.cf:after { clear:both; }
+.cf { zoom:1; } /* For IE 6/7 (trigger hasLayout) */
+
+/* Layout
+-------------------------------------------------------------- */
+body {
+  font: 100%/1.5 sans-serif;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  background: url(images/grid.png) #efefef;
+}
+
+section {
+  margin-bottom: 2em;
+}
+
+footer {
+  font-size: 0.9em;
+  border-top: 1px solid #ccc;
+  padding: 0.5em 0 2.5em;
+}
+
+/* Typography
+-------------------------------------------------------------- */
+.heading {
+  font-size: 3em;
+  margin: 0;
+}
+
+.sub-heading {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+.banner {
+	color: #21759b;
+	margin-left: 1em;
+}
+a {
+  color: #0066cc;
+}
+
+a:focus,
+a:hover {
+  color: #003399;
+}
+
+/* Elements
+-------------------------------------------------------------- */
+figure {
+  margin: 0;
+  background: #f8f8f8;
+}
+
+figcaption {
+  padding: 0.5em 1em 1em;
+  font-size: 0.875em;
+}
+
+code {
+  padding: 0.5em;
+}
+
+/* Helpers
+-------------------------------------------------------------- */
+.show-grid div[class*='grid-'] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  padding: 0.5em 1em;
+  margin-bottom: 1em;
+  border-radius: 8px;
+}
+
+a { text-decoration: none; }
+a:hover { color: #464646; }
+
+
+
+
+.mod {
+	margin: 0 0 20px 0;
+	padding: 20px;
+	background: #F3F3F3;
+	border-radius: 8px;
+}
+
+.dark {
+	color: #fff;
+	background-color: #444;
+}
+
+.codeblock {
+	height: 500px;
+}
+
+.codeblocksmall {
+	max-height: 500px;
+}
+
+.label {
+	margin-left: -20px;
+	padding: 5px 20px 5px 20px;
+	display: inline;
+	background: #21759b;
+	color: #fff;
+}
+
+.loopletlabel {
+	margin-left: 10px;
+	display: inline;
+}
+
+.looplethead { margin-bottom: 2em; }
+
+#nav {
+	background: #21759b;
+	margin: 0 0 20px -25px;
+	padding: 20px;
+	color: white;
+	margin-left: -25px;
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#nav a {
+	text-decoration: none;
+}
+
+.navtitle {
+	font-size: 1.1em;
+	text-transform: uppercase;
+	margin: 0 0 .83em 0;
+}
+
+h2.navtitle a { color: #fff; }
+h2.navtitle a:hover { color: #eee; }
+
+ul.navitems {
+	padding: 0 0 1em 0;
+	display: block;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+ul.navitems li {
+	font-size: .8em;
+}
+
+ul.navitems li a {
+	display: block;
+	padding: 0 20px 0 20px;
+	margin-left: -20px;
+	color: #BBBBBB;
+}
+
+ul.navitems li a:hover {
+	background: #F3F3F3;
+	color: #464646; 
+}

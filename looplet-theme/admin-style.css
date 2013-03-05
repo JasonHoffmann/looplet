@@ -1,0 +1,17 @@
+/*
+Theme Name: Looplet
+Theme URI: http://underscores.me/
+Author: Underscores.me
+Author URI: http://underscores.me/
+Description: Description
+Version: 1.0
+License: GNU General Public License
+License URI: license.txt
+Tags:
+
+Just adding some custom CSS for the admin panel */
+
+.mono {
+	font-family: monospace;
+	margin: 1em 0px;
+}
