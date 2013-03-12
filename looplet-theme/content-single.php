@@ -14,8 +14,8 @@
 			<?php the_title(); ?>
 		</h4>
 	</header>
-
 	
+<?php $key="html-before"; echo get_post_meta($post->ID, $key, true); ?>
 <?php 
 /* First we need to set the HTML/PHP Variable */
 $debugOutput = '';
@@ -49,6 +49,7 @@ $args = array(
 
 /* Start the Loop */
 $the_loop_query = new WP_Query( $args );
+
 while ( $the_loop_query->have_posts() ) :
 		$the_loop_query->the_post();
 		
@@ -62,7 +63,12 @@ if ($code) {
 echo $debugOutput;
 
 /* Reset The Loop */
-endwhile; wp_reset_postdata(); ?>
+endwhile; 
+
+wp_reset_postdata();
+ ?>
+ 
+<?php $key="html-after"; echo get_post_meta($post->ID, $key, true); ?>
 
 </div>
 

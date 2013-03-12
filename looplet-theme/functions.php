@@ -187,11 +187,24 @@ function looplet_add_post_meta_boxes() {
 /* Set Up Security for the Meta Box input */
 function looplet_post_class_meta_box( $post ){  
 wp_nonce_field( basename( __FILE__ ), 'looplet_post_class_nonce' ); ?>
-	
+
+<!-- First HTML Meta Box for before the Loop -->
 <p>
-	<pre>
-		<?php echo htmlspecialchars('<?php $args = array('); ?>
-	</pre>
+
+<label for="html">
+<?php _e( "Add Your HTML Before The Loop Here", 'example' ); ?>
+</label>
+	
+	<br />
+	
+<textarea id="html-before" name="html-before" rows="5" cols="90" /><?php echo esc_attr( get_post_meta($post->ID, 'html-before', true) ); ?> </textarea>
+
+</p>
+
+<p>
+<pre>
+<?php echo htmlspecialchars('<?php $args = array('); ?>
+</pre>
 
 <?php 
 /* Need to make sure that posts_per_page is set to 1 by default */
@@ -246,7 +259,20 @@ while ( $the_loop_query->have_posts() ) :
 	
 	<br />
 	
-<textarea id="html" name="html" rows="20" cols="90" /><?php echo esc_attr( get_post_meta($post->ID, 'html', true) ); ?> </textarea>
+<textarea id="html" name="html" rows="10" cols="90" /><?php echo esc_attr( get_post_meta($post->ID, 'html', true) ); ?> </textarea>
+
+</p>
+
+<!-- First HTML Meta Box for after the Loop is closed -->
+<p>
+
+<label for="html-after">
+<?php _e( "Add Your HTML After The Loop Here", 'example' ); ?>
+</label>
+	
+	<br />
+	
+<textarea id="html-after" name="html-after" rows="5" cols="90" /><?php echo esc_attr( get_post_meta($post->ID, 'html-after', true) ); ?> </textarea>
 
 </p>
 
@@ -275,7 +301,7 @@ function looplet_save_post_class_meta( $post_id ) {
         return $post_id;
     }
 
-   	
+   	    if( isset($_POST['html-before']) ) { update_post_meta( $post->ID, 'html-before', $_POST['html-before'] ); }
         if( isset($_POST['post-page']) ) { update_post_meta( $post->ID, 'post-page', $_POST['post-page'] ); }
         if( isset($_POST['category']) ) { update_post_meta( $post->ID, 'category', $_POST['category'] ); }
         if( isset($_POST['orderby']) ) { update_post_meta( $post->ID, 'orderby', $_POST['orderby'] ); }
@@ -287,5 +313,6 @@ function looplet_save_post_class_meta( $post_id ) {
         if( isset($_POST['post-status']) ) { update_post_meta( $post->ID, 'post-status', $_POST['post-status'] ); }
         if( isset($_POST['customphp']) ) { update_post_meta( $post->ID, 'customphp', $_POST['customphp'] ); }
         if( isset($_POST['html']) ) { update_post_meta( $post->ID, 'html', $_POST['html'] ); }
+        if( isset($_POST['html-after']) ) { update_post_meta( $post->ID, 'html-after', $_POST['html-after'] ); }
         if( isset($_POST['css']) ) { update_post_meta( $post->ID, 'css', $_POST['css'] ); }
 }
