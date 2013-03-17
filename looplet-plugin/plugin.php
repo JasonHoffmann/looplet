@@ -74,7 +74,7 @@ class Looplet {
 		// Register hooks that are fired when the plugin is activated, deactivated, and uninstalled, respectively.
 		register_activation_hook( __FILE__, array( $this, 'activate' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
-		register_uninstall_hook( __FILE__, array( $this, 'uninstall' ) );
+		register_uninstall_hook( __FILE__, 'uninstall');
 
 	} // end constructor
 	
