@@ -28,7 +28,7 @@
 //
 function process_cat_tree( $cat ) {
  
- $args = array('category__in' => array( $cat ), 'numberposts' => -1, 'orderby' => title, 'order' => ASC);
+ $args = array('category__in' => array( $cat ), 'numberposts' => -1, 'orderby' => 'title', 'order' => 'ASC');
  $cat_posts = get_posts( $args );
  
  if( $cat_posts ) :
