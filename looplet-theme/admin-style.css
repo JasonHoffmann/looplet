@@ -15,3 +15,8 @@ Just adding some custom CSS for the admin panel */
 	font-family: monospace;
 	margin: 1em 0px;
 }
+
+.lightertext { 
+	font-weight: lighter;
+	color: #21759b;
+}

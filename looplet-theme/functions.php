@@ -191,13 +191,13 @@ wp_nonce_field( basename( __FILE__ ), 'looplet_post_class_nonce' ); ?>
 <!-- First HTML Meta Box for before the Loop -->
 <p>
 
-<label for="html">
+<label for="html" class="lightertext">
 <?php _e( "Add Your HTML Before The Loop Here", 'example' ); ?>
 </label>
 	
 	<br />
 	
-<textarea id="html-before" name="html-before" rows="5" cols="90" /><?php echo esc_attr( get_post_meta($post->ID, 'html-before', true) ); ?> </textarea>
+<textarea id="html-before" name="html-before" rows="5" cols="90" /><?php echo esc_attr( get_post_meta($post->ID, 'html-before', true) ); ?></textarea>
 
 </p>
 
@@ -215,31 +215,58 @@ $posts_page_value = get_post_meta($post->ID, 'post-page', true);
 
 <!-- Admin Menu for Custom Fields -->
 	<label for="post-page" class="mono"><?php _e( "'posts_per_page' =>", 'example' ); ?></label>
-	<input type="text" name="post-page" id="post-page" value="<?php echo esc_attr( $posts_page_value ); ?>" size="3" /><br />
+	<input type="text" name="post-page" id="post-page" value="<?php echo esc_attr( $posts_page_value ); ?>" size="3" />
+	<p class="lightertext"><em>(int)</em> Number of posts to display. Use "-1" to display all posts within query</p><br />
+
+	<label for="author" class="mono"><?php _e( "'author' =>", 'example' ); ?></label>
+	<input type="text" name="author" id="author" value="<?php echo esc_attr( get_post_meta($post->ID, 'author', true) ); ?>" size="3" /> 
+	<p class="lightertext"><em>(int)</em> Author ID should be used. You can specify multiple authors ('author' => 2,7,8)</p><br />
+
+	<label for="categoryname" class="mono"><?php _e( "'category_name' =>", 'example' ); ?></label>
+	<input type="text" name="categoryname" id="categoryname" value="<?php echo esc_attr( get_post_meta($post->ID, 'categoryname', true) ); ?>" size="3" />
+	<p class="lightertext"><em>(slug)</em> Category slug (not name) should be used.<br />
+	Imported slugs include "category-1", "category-2" and "category-3"</p>
 	
 	<label for="category" class="mono"><?php _e( "'cat' =>", 'example' ); ?></label>
-	<input type="text" name="category" id="category" value="<?php echo esc_attr( get_post_meta($post->ID, 'category', true) ); ?>" size="3" /> <span>(use integer)</span><br />
+	<input type="text" name="category" id="category" value="<?php echo esc_attr( get_post_meta($post->ID, 'category', true) ); ?>" size="3" />
+	<p class="lightertext"><em>(int)</em> Category ID should be used. Negative value will exclude a category ('cat' => -12). You can specify multiple categories (e.g. 'cat' => 2,7,8)</p><br />
 	
+	<label for="tag" class="mono"><?php _e( "'tag' =>", 'example' ); ?></label>
+	<input type="text" name="tag" id="tag" value="<?php echo esc_attr( get_post_meta($post->ID, 'tag', true) ); ?>" size="3" />
+	<p class="lightertext"><em>(string)</em> Tag Name should be used. You can specify multiple tags (e.g. 'tag' => 'food, movies'). + sign displays post in <em>all</em> (e.g. 'tag' => 'food+movies')<br />
+	Imported tags include "tag1", "tag2", "tag3", "tag4", "tag5", "tag6", "tag7"</p>
+
+	<label for="search" class="mono"><?php _e( "'s' =>", 'example' ); ?></label>
+	<input type="text" name="search" id="search" value="<?php echo esc_attr( get_post_meta($post->ID, 'search', true) ); ?>" size="3" />
+	<p class="lightertext"><em>(string)</em> Keyword search. Retrieves posts that match the search term.</p><br />
+
+	<label for="postid" class="mono"><?php _e( "'p' =>", 'example' ); ?></label>
+	<input type="text" name="postid" id="postid" value="<?php echo esc_attr( get_post_meta($post->ID, 'postid', true) ); ?>" size="3" />
+	<p class="lightertext"><em>(int)</em> Match Post ID. Multiple Post IDs can be used (e.g. 'p' => 2,5,6).</p><br />
+
+	<label for="pageid" class="mono"><?php _e( "'page_id' =>", 'example' ); ?></label>
+	<input type="text" name="pageid" id="pageid" value="<?php echo esc_attr( get_post_meta($post->ID, 'pageid', true) ); ?>" size="3" />
+	<p class="lightertext"><em>(int)</em> Match Page ID. Multiple Page IDs can be used (e.g. 'page_id' => 2,5,6).</p><br />
+
+	<label for="poststatus" class="mono"><?php _e( "'post_status' =>", 'example' ); ?></label>
+	<input type="text" name="poststatus" id="poststatus" value="<?php echo esc_attr( get_post_meta($post->ID, 'poststatus', true) ); ?>" size="3" />
+	<p class="lightertext"><em>(string | array)</em> Post Status (e.g. 'post_status' => 'draft'). Can use array with multiple values (e.g. 'post_status' => array( 'draft', 'pending') )/</p>
+
 	<label for="orderby" class="mono"><?php _e( "'orderby' =>", 'example' ); ?></label>
-	<input type="text" name="orderby" id="orderby" value="<?php echo esc_attr( get_post_meta($post->ID, 'orderby', true) ); ?>" size="3" /><br />
-	
+	<input type="text" name="orderby" id="orderby" value="<?php echo esc_attr( get_post_meta($post->ID, 'orderby', true) ); ?>" size="3" />
+	<p class="lightertext"><em>(string)</em> Order by id, title, author, etc. (e.g. 'orderby' => 'date')</p><br />
+
 	<label for="order" class="mono"><?php _e( "'order' =>", 'example' ); ?></label>
-	<input type="text" name="order" id="order" value="<?php echo esc_attr( get_post_meta($post->ID, 'order', true) ); ?>" size="3" /><br />
-	
-	<label for="include" class="mono"><?php _e( "'include' =>", 'example' ); ?></label>
-	<input type="text" name="include" id="include" value="<?php echo esc_attr( get_post_meta($post->ID, 'include', true) ); ?>" size="3" /><br />
-	
-	<label for="exclude" class="mono"><?php _e( "'exclude' =>", 'example' ); ?></label>
-	<input type="text" name="exclude" id="exclude" value="<?php echo esc_attr( get_post_meta($post->ID, 'exclude', true) ); ?>" size="3" /><br />
+	<input type="text" name="order" id="order" value="<?php echo esc_attr( get_post_meta($post->ID, 'order', true) ); ?>" size="3" />
+	<p class="lightertext"><em>(string)</em> ASC (ascending) or DESC (descending). (e.g. 'order' => 'ASC')</p><br />
 	
 	<label for="meta-key" class="mono"><?php _e( "'meta_key' =>", 'example' ); ?></label>
-	<input type="text" name="meta-key" id="meta-key" value="<?php echo esc_attr( get_post_meta($post->ID, 'meta-key', true) ); ?>" size="3" /><br />
+	<input type="text" name="meta-key" id="meta-key" value="<?php echo esc_attr( get_post_meta($post->ID, 'meta-key', true) ); ?>" size="3" />
+	<p class="lightertext"><em>(string)</em> Retrieve posts from a specific custom field key. (e.g. 'meta-key' => 'color')</p><br />
 	
 	<label for="meta-value" class="mono"><?php _e( "'meta_value' =>", 'example' ); ?></label>
-	<input type="text" name="meta-value" id="meta-value" value="<?php echo esc_attr( get_post_meta($post->ID, 'meta-value', true) ); ?>" size="3" /><br />
-	
-	<label for="customphp" class="mono"><?php _e( "Custom PHP to be added before the loop", 'example' ); ?></label>
-	<input type="text" name="" id="customphp" value="<?php echo esc_attr( get_post_meta($post->ID, 'customphp', true) ); ?>" size="20" /><br />
+	<input type="text" name="meta-value" id="meta-value" value="<?php echo esc_attr( get_post_meta($post->ID, 'meta-value', true) ); ?>" size="3" />
+	<p class="lightertext"><em>(string)</em> References meta-key. Retrieve posts from a specific value within specific key. (e.g. 'meta-value' => 'blue')</p><br />
 	
 	<pre>'post_type' => 'looplet',</pre>
 
@@ -253,39 +280,39 @@ while ( $the_loop_query->have_posts() ) :
 <!-- Now the HTML Meta Box -->
 <p>
 
-	<label for="html">
+	<label for="html" class="lightertext">
 		<?php _e( "Add Your PHP/HTML In the Loop Here", 'example' ); ?>
 	</label>
 	
 	<br />
 	
-<textarea id="html" name="html" rows="10" cols="90" /><?php echo esc_attr( get_post_meta($post->ID, 'html', true) ); ?> </textarea>
+<textarea id="html" name="html" rows="10" cols="90" /><?php echo esc_attr( get_post_meta($post->ID, 'html', true) ); ?></textarea>
 
 </p>
 
 <!-- First HTML Meta Box for after the Loop is closed -->
 <p>
 
-<label for="html-after">
+<label for="html-after" class="lightertext">
 <?php _e( "Add Your HTML After The Loop Here", 'example' ); ?>
 </label>
 	
 	<br />
 	
-<textarea id="html-after" name="html-after" rows="5" cols="90" /><?php echo esc_attr( get_post_meta($post->ID, 'html-after', true) ); ?> </textarea>
+<textarea id="html-after" name="html-after" rows="5" cols="90" /><?php echo esc_attr( get_post_meta($post->ID, 'html-after', true) ); ?></textarea>
 
 </p>
 
 <!-- And the CSS Meta Box -->
 <p>
 
-	<label for="css">
+	<label for="css" class="lightertext">
 		<?php _e( "Add Custom CSS Here", 'example' ); ?>
 	</label>
 	
 	<br />
 	
-<textarea id="css" name="css" rows="20" cols="90" /><?php echo get_post_meta($post->ID, 'css', true); ?> </textarea>
+<textarea id="css" name="css" rows="20" cols="90" /><?php echo get_post_meta($post->ID, 'css', true); ?></textarea>
 	
 </p>
 	
@@ -303,15 +330,18 @@ function looplet_save_post_class_meta( $post_id ) {
 
    	    if( isset($_POST['html-before']) ) { update_post_meta( $post->ID, 'html-before', $_POST['html-before'] ); }
         if( isset($_POST['post-page']) ) { update_post_meta( $post->ID, 'post-page', $_POST['post-page'] ); }
+        if( isset($_POST['author']) ) { update_post_meta( $post->ID, 'author', $_POST['author'] ); }
         if( isset($_POST['category']) ) { update_post_meta( $post->ID, 'category', $_POST['category'] ); }
+        if( isset($_POST['categoryname']) ) { update_post_meta( $post->ID, 'categoryname', $_POST['categoryname'] ); }
+        if( isset($_POST['tag']) ) { update_post_meta( $post->ID, 'tag', $_POST['tag'] ); }
+        if( isset($_POST['search']) ) { update_post_meta( $post->ID, 'search', $_POST['search'] ); }
+        if( isset($_POST['postid']) ) { update_post_meta( $post->ID, 'postid', $_POST['postid'] ); }
+        if( isset($_POST['pageid']) ) { update_post_meta( $post->ID, 'pageid', $_POST['pageid'] ); }
+        if( isset($_POST['poststatus']) ) { update_post_meta( $post->ID, 'poststatus', $_POST['poststatus'] ); }
         if( isset($_POST['orderby']) ) { update_post_meta( $post->ID, 'orderby', $_POST['orderby'] ); }
         if( isset($_POST['order']) ) { update_post_meta( $post->ID, 'order', $_POST['order'] ); }
-        if( isset($_POST['include']) ) { update_post_meta( $post->ID, 'include', $_POST['include'] ); }
-        if( isset($_POST['exclude']) ) { update_post_meta( $post->ID, 'exclude', $_POST['exclude'] ); }
         if( isset($_POST['meta-key']) ) { update_post_meta( $post->ID, 'meta-key', $_POST['meta-key'] ); }
         if( isset($_POST['meta-value']) ) { update_post_meta( $post->ID, 'meta-value', $_POST['meta-value'] ); }
-        if( isset($_POST['post-status']) ) { update_post_meta( $post->ID, 'post-status', $_POST['post-status'] ); }
-        if( isset($_POST['customphp']) ) { update_post_meta( $post->ID, 'customphp', $_POST['customphp'] ); }
         if( isset($_POST['html']) ) { update_post_meta( $post->ID, 'html', $_POST['html'] ); }
         if( isset($_POST['html-after']) ) { update_post_meta( $post->ID, 'html-after', $_POST['html-after'] ); }
         if( isset($_POST['css']) ) { update_post_meta( $post->ID, 'css', $_POST['css'] ); }
