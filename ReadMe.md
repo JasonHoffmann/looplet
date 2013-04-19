@@ -2,7 +2,7 @@ Looplet is a WordPress code library that lets you create simple and reusable pat
 
 Looplet is primarly an educational tool. It features prominent inline documentation to help new developers learn how to navigate the WordPress loop and for expereinced developers to catalog and organize common patterns. That might mean a simple grid of posts you’ve coded a thousand times or a list of titles organized by date. Through Looplet, you can learn what comprises a WordPress loop in isolation, without risking everything falling to pieces.
 
-A demo can be found at [http://www.wpjay.com/looplet](http://www.wpjay.com/looplet)
+A demo can be found at [http://www.jayhoffmann.com/looplet](http://www.jayhoffmann.com/looplet)
 
 ###The Looplet Companion Plugin
 First, it is best to install the Looplet companion plugin. To do this: 
